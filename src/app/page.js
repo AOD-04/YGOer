@@ -27,7 +27,14 @@ export default function Page() {
   }
 
   useEffect (() => {
-    e.preventDefault();
+    loadRandomCard();
+  }
+)
+
+const handleGuess = (e) => {
+  e.preventDefault();
+  if (!card) return;
+
     if (!card) return;
 
     if (guess.trim().toUpperCase() == card.name.toUpperCase()) {
@@ -44,11 +51,10 @@ export default function Page() {
       setIncorrectCount(count => count + 1);
     }
   }
-)
 
   return ( 
-    <div>
+    <main>
       <h1> completed </h1> 
-    </div>
+    </main>
   )
 }
