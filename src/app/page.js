@@ -50,4 +50,5 @@ const handleGuess = (e) => {
       setIncorrectCount(count => count + 1);
     }
   }
+
 }
