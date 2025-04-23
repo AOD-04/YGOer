@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import CardData from "./components/CardData";
-import UserGuessing from "./components/UserGuessing";
-import HintDisplay from "./components/Hints";
-import ResultDisplay from "./components/Results";
-import StatTracker from "./components/StatTracking";
+import {CardData} from "./components/CardData";
+import {UserGuessing} from "./components/UserGuessing";
+import {HintDisplay} from "./components/Hints";
+import {ResultDisplay} from "./components/Results";
+import {StatTracker} from "./components/StatTracking";
 
+
+//Below gets a random yugioh card
 async function fetchRandomCard() {
   const response = await
   fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php")
@@ -35,6 +37,7 @@ export default function Page() {
   }
 )
 
+//Below is for handling the users input when they guess
 const handleGuess = (e) => {
   e.preventDefault();
   if (!card) return;
@@ -55,6 +58,8 @@ const handleGuess = (e) => {
       setIncorrectCount(count => count + 1);
     }
   }
+
+  //below is the text that would be displayed on the page
   return (
     <main>
       <h1>YGOer | Welcome to the Yu-gi-Oh Guessing game!</h1>
@@ -66,13 +71,12 @@ const handleGuess = (e) => {
         onGuess={handleGuess}
         disabled={showResult}
       />
-      <ResultDisplay
-        card={card}
+      <ResultDisplay card={card}
         isCorrect={isCorrect}
         showResult={showResult}
         onNext={loadRandomCard}
       />
     </main>
   );
-  
+
 }
