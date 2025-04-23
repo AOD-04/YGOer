@@ -1,5 +1,10 @@
 "use client";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import CardData from "./components/CardData";
+import UserGuessing from "./components/UserGuessing";
+import HintDisplay from "./components/Hints";
+import ResultDisplay from "./components/Results";
+import StatTracker from "./components/StatTracking";
 
 async function fetchRandomCard() {
   const response = await
@@ -50,5 +55,24 @@ const handleGuess = (e) => {
       setIncorrectCount(count => count + 1);
     }
   }
-
+  return (
+    <main>
+      <h1>YGOer | Welcome to the Yu-gi-Oh Guessing game!</h1>
+      <StatTracker correctCount={correctCount} incorrectCount={incorrectCount} />
+      <CardData card={card} />
+      <HintDisplay card={card} hintsUsed={hintsUsed} />
+      <UserGuessing guess={guess}
+        setGuess={setGuess}
+        onGuess={handleGuess}
+        disabled={showResult}
+      />
+      <ResultDisplay
+        card={card}
+        isCorrect={isCorrect}
+        showResult={showResult}
+        onNext={loadRandomCard}
+      />
+    </main>
+  );
+  
 }
