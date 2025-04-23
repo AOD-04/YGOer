@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import {CardData} from "./components/CardData.";
+import {CardData} from "./components/CardData";
 import {UserGuessing} from "./components/UserGuessing";
 import {HintText} from "./components/Hints";
 import {ResultDisplay} from "./components/Results";

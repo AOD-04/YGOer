@@ -9,6 +9,7 @@ export default function CardData ({card}) {
             <li>DEF:</li>
             <li>Level/Rank:</li>
             <li>Attribute:</li>
+            {card.type && <li>Card Type: {card.type}</li>}
         </ul>
     )
 }
