@@ -17,4 +17,38 @@ export default function Page() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
+
+  const loadRandomCard = async () => {
+    const newCard = await fetchRandomCard();
+    setCard(newCard);
+    setGuess("");
+    setHintNumber(0);
+    setShowResult(false);
+  }
+
+  useEffect (() => {
+    e.preventDefault();
+    if (!card) return;
+
+    if (guess.trim().toUpperCase() == card.name.toUpperCase()) {
+      setIsCorrect(true);
+      setShowResult(true);
+      setCorrectCount(count => count + 1);
+    }
+    else if (hintNumber < 3) {
+      setHintNumber(hints => 3)
+    }
+    else {
+      setIsCorrect(false);
+      setShowResult(true);
+      setIncorrectCount(count => count + 1);
+    }
+  }
+)
+
+  return ( 
+    <div>
+      <h1> completed </h1> 
+    </div>
+  )
 }
