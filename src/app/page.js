@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import {CardData} from "./components/CardData";
+import {CardData} from "./components/CardData.";
 import {UserGuessing} from "./components/UserGuessing";
-import {HintDisplay} from "./components/Hints";
+import {HintText} from "./components/Hints";
 import {ResultDisplay} from "./components/Results";
 import {StatTracker} from "./components/StatTracking";
 
@@ -65,7 +65,7 @@ const handleGuess = (e) => {
       <h1>YGOer | Welcome to the Yu-gi-Oh Guessing game!</h1>
       <StatTracker correctCount={correctCount} incorrectCount={incorrectCount} />
       <CardData card={card} />
-      <HintDisplay card={card} hintsUsed={hintsUsed} />
+      <HintText card={card} hintsUsed={hintsUsed} />
       <UserGuessing guess={guess}
         setGuess={setGuess}
         onGuess={handleGuess}
