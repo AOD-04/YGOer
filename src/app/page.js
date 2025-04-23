@@ -52,6 +52,11 @@ const handleGuess = (e) => {
     }
   }
 
+  const getHint = () => {{
+    if (!card) return Null
+  }
+
+  }
   return ( 
     <main>
       <h1> completed </h1> 
