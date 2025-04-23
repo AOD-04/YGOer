@@ -10,7 +10,7 @@ import {StatTracker} from "./components/StatTracking";
 //Below gets a random yugioh card
 async function fetchRandomCard() {
   const response = await
-  fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+  fetch("https://db.ygoprodeck.com/api/v7/randomcard.php")
   const data = await response.json();
   return data;
 }
