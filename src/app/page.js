@@ -52,14 +52,60 @@ const handleGuess = (e) => {
     }
   }
 
-  const getHint = () => {{
-    if (!card) return Null
-  }
+  const getHint = () => {
+    if (!card) return [];
+    const hints = [
+      `Card Type: ${card.type}`,
+      `Level/Rank: ${card.level || "N/A"}`,
+      `Archetype: ${card.archetype || "N/A"}`
+    ];
+    return hints.slice(0, hintNumber);
+  };
 
-  }
-  return ( 
+  return (
     <main>
-      <h1> completed </h1> 
+      <h1>YGOer - Yu-Gi-Oh! Guessing Game</h1>
+      <div>
+        <p>Correct: {correctCount} | Incorrect: {incorrectCount}</p>
+      </div>
+      {card && (
+        <div>
+          <h2>Guess the Card</h2>
+          <ul>
+            <li>Card Type: </li>
+            <li>ATK: {card.atk}</li>
+            <li>DEF: {card.def}</li>
+            <li>Type: {card.type}</li>
+            <li>Attribute: {card.attribute}</li>
+            <li>Level/Rank: </li>
+          </ul>
+          {getHint().map((hint, idx) => (
+            <div key={idx}><strong>Hint {idx+1}:</strong> {hint}</div>
+          ))}
+          {!showResult && (
+            <form onSubmit={handleGuess}>
+              <input
+                type="text"
+                value={guess}
+                onChange={e => setGuess(e.target.value)}
+                placeholder="Enter card name"
+              />
+              <button type="submit">Guess</button>
+            </form>
+          )}
+          {showResult && (
+            <div>
+              {isCorrect ? (
+                <p> Correct! The card was <strong>{card.name}</strong>.</p>
+              ) : (
+                <p> Out of hints! The card was <strong>{card.name}</strong>.</p>
+              )}
+              <img src={"https://db.ygoprodeck.com/api/v7/cardinfo.php"} alt={card.name} style={{maxWidth: "300px"}} />
+              <button onClick={loadRandomCard}>Next Card</button>
+            </div>
+          )}
+        </div>
+      )}
     </main>
-  )
+  );
 }
